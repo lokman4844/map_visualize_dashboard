@@ -1,0 +1,81 @@
+:host {
+    display: block;
+    --dashboard-bg: #061121;
+    --panel-bg: rgba(30, 27, 75, 0.4);
+    --accent-sky: #38bdf8;
+    --accent-indigo: #818cf8;
+}
+
+.table th {
+    @apply border-b border-[#ffffff10];
+}
+
+.table tr {
+    @apply bg-transparent;
+}
+
+/* Status Glows */
+.bg-green-500 {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+}
+
+.bg-yellow-500 {
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+}
+
+.bg-red-500 {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+/* Animations */
+@keyframes status-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.animate-pulse {
+    animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+img {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Glassmorphism adjustments */
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dashboard-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Table Hover effects */
+tbody tr:hover {
+    background: rgba(255,255,255,0.03) !important;
+}
+
+/* Progress bar animation */
+.h-full {
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

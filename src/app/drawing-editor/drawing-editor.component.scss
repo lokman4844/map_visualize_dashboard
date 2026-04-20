@@ -1,0 +1,11 @@
+.drawing-editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.myDiagramDiv {
+  border: solid 1px #2c323b;
+  background-color: #151c26;
+  width: 100%;
+  height: 800px; /* Taller for editor */
+}

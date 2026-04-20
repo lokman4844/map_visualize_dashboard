@@ -1,0 +1,29 @@
+<div class="drawing-editor p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-bold uppercase">Drawing Editor</h2>
+    <div class="flex gap-2">
+      <button (click)="resetToDefaults()" class="btn btn-error btn-outline btn-sm">
+        Reset to Default
+      </button>
+      <button (click)="saveChanges()" class="btn btn-primary btn-sm">
+        Save Changes
+      </button>
+    </div>
+  </div>
+
+  <div class="alert alert-info shadow-sm mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <span>In the Editor, you can <strong>drag nodes</strong> to rearrange them. Click Save to apply changes to the Monitor.</span>
+  </div>
+
+  <div class="border border-base-300 rounded-lg overflow-hidden">
+    <gojs-diagram #myDiag 
+      [initDiagram]="initDiagram" 
+      [nodeDataArray]="diagramNodeData" 
+      [linkDataArray]="diagramLinkData"
+      [modelData]="diagramModelData" 
+      [divClassName]="diagramDivClassName" 
+      (modelChange)="onModelChange($event)">
+    </gojs-diagram>
+  </div>
+</div>

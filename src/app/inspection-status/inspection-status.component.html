@@ -1,0 +1,196 @@
+<div class="min-h-screen bg-[#061121] text-white p-6 font-sans antialiased">
+  <!-- Header Navigation -->
+  <div
+    class="flex justify-between items-center mb-8 bg-indigo-950/40 p-4 rounded-xl border border-white/5 backdrop-blur-md">
+    <div class="flex items-center gap-4">
+      <div
+        class="w-10 h-10 bg-sky-500 rounded-lg flex items-center justify-center font-bold text-lg shadow-lg shadow-sky-500/20">
+        MI
+      </div>
+      <div>
+        <h1 class="text-xl font-bold tracking-tight text-white">{{ dashboardTitle }}</h1>
+        <p class="text-[10px] text-sky-400 font-mono tracking-widest uppercase">{{ assetId }} • LAST SYNC: {{ lastSync
+          }}</p>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <a routerLink="/" class="btn btn-sm btn-ghost gap-2 normal-case font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        </svg>
+        Back to Map
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-12 gap-6">
+    <!-- Left Panel: Summary Gauges & 3D Network -->
+    <div class="col-span-12 xl:col-span-4 flex flex-col gap-6">
+      <!-- Health Gauges -->
+      <div class="grid grid-cols-3 gap-4">
+        <div *ngFor="let stat of overallStats"
+          class="bg-indigo-950/20 border border-white/5 rounded-2xl p-4 flex flex-col items-center group hover:border-sky-500/30 transition-all duration-300">
+          <div class="text-[9px] font-bold text-gray-400 mb-3 tracking-widest uppercase">{{ stat.label }}</div>
+          <div class="relative w-24 h-24 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90">
+              <circle cx="48" cy="48" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="6" fill="transparent" />
+              <circle cx="48" cy="48" r="40" [attr.stroke]="stat.color" stroke-width="6" fill="transparent"
+                [ngStyle]="getGaugeStyle(stat.value)" class="transition-all duration-1000 ease-out" />
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="text-lg font-bold">{{ stat.value }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Network 3D Visualization -->
+      <div
+        class="relative flex-1 bg-indigo-950/20 rounded-3xl overflow-hidden border border-white/5 p-6 min-h-[500px] flex items-center justify-center">
+        <img src="assets/images/pipeline-platform.png" alt="Pipeline Network"
+          class="max-w-full object-contain opacity-90 drop-shadow-[0_0_30px_rgba(56,189,248,0.2)]" />
+
+        <!-- Status Overlays (Simplified for now) -->
+        <div class="absolute top-[20%] left-[20%] animate-pulse">
+          <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]"></div>
+        </div>
+        <div class="absolute bottom-[30%] right-[25%] animate-bounce">
+          <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
+        </div>
+        <div class="absolute top-[50%] right-[40%]">
+          <div class="w-2 h-2 rounded-full bg-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.8)]"></div>
+        </div>
+
+        <div class="absolute bottom-6 left-6 text-left">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-2 h-6 bg-sky-500 rounded-full"></div>
+            <h3 class="font-bold text-sm tracking-tight">Active Inspection Zones</h3>
+          </div>
+          <p class="text-[10px] text-gray-400">Total verified pipelines: 24 km</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel: Inspection Details & Tables -->
+    <div class="col-span-12 xl:col-span-8 flex flex-col gap-6">
+      <!-- Equipment Status Table -->
+      <div class="bg-indigo-950/20 rounded-3xl border border-white/5 overflow-hidden backdrop-blur-sm">
+        <div class="p-4 border-b border-white/5 flex justify-between items-center bg-indigo-950/30">
+          <div class="flex items-center gap-3">
+            <div class="p-2 bg-sky-500/10 rounded-lg text-sky-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-sm">Vital Equipment Inspection Status</h3>
+          </div>
+          <div class="badge badge-outline border-white/10 text-[10px] text-gray-400 uppercase tracking-widest">Fixed
+            Assets</div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="table w-full">
+            <thead>
+              <tr class="text-gray-400 text-[10px] uppercase tracking-wider border-b border-white/5">
+                <th class="bg-transparent">Asset ID</th>
+                <th class="bg-transparent">Name</th>
+                <th class="bg-transparent">Status</th>
+                <th class="bg-transparent">Last Insp.</th>
+                <th class="bg-transparent">Next Insp.</th>
+                <th class="bg-transparent">Score</th>
+                <th class="bg-transparent">Alerts</th>
+              </tr>
+            </thead>
+            <tbody class="text-xs">
+              <tr *ngFor="let item of equipment"
+                class="hover:bg-white/5 border-b border-white/5 group transition-colors">
+                <td class="font-mono text-sky-400 font-bold bg-transparent">
+                   <a routerLink="/monitor">
+                    {{ item.id }}
+                  </a>
+                </td>
+                <td class="bg-transparent font-medium">
+                  <a routerLink="/monitor">
+                    {{ item.name }}
+                  </a>
+                </td>
+                <td class="bg-transparent">
+                  <div class="flex items-center gap-2">
+                    <div [class]="getStatusClass(item.status)" class="w-3 h-3 rounded-full shadow-lg"></div>
+                    <span class="text-[10px] uppercase font-bold tracking-tighter opacity-70">{{ item.status }}</span>
+                  </div>
+                </td>
+                <td class="bg-transparent text-gray-400">{{ item.lastInspection }}</td>
+                <td class="bg-transparent font-medium"
+                  [class]="item.status === 'Red' ? 'text-red-400' : 'text-gray-300'">{{ item.nextInspection }}</td>
+                <td class="bg-transparent">
+                  <div class="flex items-center gap-2">
+                    <div class="h-1 w-12 bg-gray-800 rounded-full overflow-hidden">
+                      <div class="h-full bg-sky-500" [style.width.%]="item.integrityScore"></div>
+                    </div>
+                    <span class="font-bold">{{ item.integrityScore }}</span>
+                  </div>
+                </td>
+                <td class="bg-transparent italic text-gray-500 max-w-[150px] truncate">{{ item.findings || 'No issues'
+                  }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pipeline Integrity Table -->
+      <div class="bg-indigo-950/20 rounded-3xl border border-white/5 overflow-hidden backdrop-blur-sm">
+        <div class="p-4 border-b border-white/5 flex justify-between items-center bg-indigo-950/30">
+          <div class="flex items-center gap-3">
+            <div class="p-2 bg-indigo-400/10 rounded-lg text-indigo-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-sm">Pipeline Integrity Tracking</h3>
+          </div>
+          <div class="badge badge-outline border-white/10 text-[10px] text-gray-400 uppercase tracking-widest">Subsea &
+            Export</div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="table w-full">
+            <thead>
+              <tr class="text-gray-400 text-[10px] uppercase tracking-wider border-b border-white/5">
+                <th class="bg-transparent">Tag</th>
+                <th class="bg-transparent">Pipeline Segment</th>
+                <th class="bg-transparent">Condition</th>
+                <th class="bg-transparent">Score</th>
+                <th class="bg-transparent">Findings</th>
+              </tr>
+            </thead>
+            <tbody class="text-xs">
+              <tr *ngFor="let item of pipelines"
+                class="hover:bg-white/5 border-b border-white/5 bg-transparent transition-colors">
+                <td class="font-mono text-indigo-400 font-bold bg-transparent">{{ item.id }}</td>
+                <td class="bg-transparent font-medium">{{ item.name }}</td>
+                <td class="bg-transparent">
+                  <div class="flex items-center gap-2">
+                    <div [class]="getStatusClass(item.status)" class="w-3 h-3 rounded-full shadow-lg"></div>
+                    <span class="text-[10px] uppercase font-bold tracking-tighter opacity-70">{{ item.status }}</span>
+                  </div>
+                </td>
+                <td class="bg-transparent">
+                  <div class="flex items-center gap-2 font-bold"
+                    [class]="item.integrityScore < 70 ? 'text-red-400' : 'text-white'">
+                    {{ item.integrityScore }} / 100
+                  </div>
+                </td>
+                <td class="bg-transparent italic text-gray-500">{{ item.findings || 'Optimal condition' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+.map-overview {
+  background-color: #0b0f14;
+  height: calc(100vh - 64px); /* Full height minus header */
+}
+
+#leaflet-map {
+  height: 100%;
+  width: 100%;
+}
+
+/* Override Leaflet popup styles */
+:host ::ng-deep .custom-leaflet-popup .leaflet-popup-content-wrapper {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+:host ::ng-deep .custom-leaflet-popup .leaflet-popup-content {
+  margin: 0;
+  line-height: 1.5;
+}
+
+:host ::ng-deep .custom-leaflet-popup .leaflet-popup-tip-container {
+  display: none;
+}
+
+:host ::ng-deep .leaflet-popup-close-button {
+  color: #9ca3af !important;
+  font-size: 18px;
+  top: 8px !important;
+  right: 8px !important;
+}
+
+:host ::ng-deep .leaflet-popup-close-button:hover {
+  color: white !important;
+}
+
+/* Hide default Leaflet attribution for cleaner look */
+:host ::ng-deep .leaflet-control-attribution {
+  opacity: 0.5;
+  font-size: 10px;
+}
