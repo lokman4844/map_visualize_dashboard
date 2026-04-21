@@ -21,36 +21,36 @@ interface InspectionItem {
   styleUrls: ['./inspection-status.component.scss']
 })
 export class InspectionStatusComponent implements OnInit {
-  assetId = 'SAP-BLOCK-SK311';
+  assetId = 'SAP-BLOCK-SKV311';
   dashboardTitle = 'Asset Integrity & Inspection Dashboard';
   lastSync = new Date().toLocaleString();
 
   pipelines: InspectionItem[] = [
-    { 
-      id: 'PL-001', 
-      name: 'Main Trunk Line (Export)', 
-      status: 'Green', 
-      lastInspection: '2026-03-15', 
-      nextInspection: '2026-09-15', 
+    {
+      id: 'PL-001',
+      name: 'Main Trunk Line (Export)',
+      status: 'Green',
+      lastInspection: '2026-03-15',
+      nextInspection: '2026-09-15',
       integrityScore: 98,
       type: 'Pipeline'
     },
-    { 
-      id: 'PL-005', 
-      name: 'Subsea Production Header', 
-      status: 'Yellow', 
-      lastInspection: '2025-11-20', 
-      nextInspection: '2026-05-20', 
+    {
+      id: 'PL-005',
+      name: 'Subsea Production Header',
+      status: 'Yellow',
+      lastInspection: '2025-11-20',
+      nextInspection: '2026-05-20',
       integrityScore: 82,
       findings: 'Minor pitting detected @ 4.2km',
       type: 'Pipeline'
     },
-    { 
-      id: 'PL-012', 
-      name: 'Flare Gas Disposal Line', 
-      status: 'Red', 
-      lastInspection: '2025-08-10', 
-      nextInspection: '2026-02-10', 
+    {
+      id: 'PL-012',
+      name: 'Flare Gas Disposal Line',
+      status: 'Red',
+      lastInspection: '2025-08-10',
+      nextInspection: '2026-02-10',
       integrityScore: 65,
       findings: 'Critical wall thinning detected',
       type: 'Pipeline'
@@ -58,40 +58,40 @@ export class InspectionStatusComponent implements OnInit {
   ];
 
   equipment: InspectionItem[] = [
-    { 
-      id: 'K-100A', 
-      name: 'LP Compressor Unit', 
-      status: 'Green', 
-      lastInspection: '2026-04-01', 
-      nextInspection: '2026-10-01', 
+    {
+      id: 'K-100A',
+      name: 'LP Compressor Unit',
+      status: 'Green',
+      lastInspection: '2026-04-01',
+      nextInspection: '2026-10-01',
       integrityScore: 95,
       type: 'Equipment'
     },
-    { 
-      id: 'V-201', 
-      name: 'High-Pressure Separator', 
-      status: 'Green', 
-      lastInspection: '2026-01-15', 
-      nextInspection: '2027-01-15', 
+    {
+      id: 'V-201',
+      name: 'High-Pressure Separator',
+      status: 'Green',
+      lastInspection: '2026-01-15',
+      nextInspection: '2027-01-15',
       integrityScore: 99,
       type: 'Equipment'
     },
-    { 
-      id: 'P-302B', 
-      name: 'Condensate Export Pump', 
-      status: 'Yellow', 
-      lastInspection: '2026-02-10', 
-      nextInspection: '2026-05-10', 
+    {
+      id: 'P-302B',
+      name: 'Condensate Export Pump',
+      status: 'Yellow',
+      lastInspection: '2026-02-10',
+      nextInspection: '2026-05-10',
       integrityScore: 78,
       findings: 'Seal leak alert',
       type: 'Equipment'
     },
-    { 
-      id: 'E-501', 
-      name: 'Main Flare Stack', 
-      status: 'Red', 
-      lastInspection: '2025-12-05', 
-      nextInspection: '2026-03-05', 
+    {
+      id: 'E-501',
+      name: 'Main Flare Stack',
+      status: 'Red',
+      lastInspection: '2025-12-05',
+      nextInspection: '2026-03-05',
       integrityScore: 45,
       findings: 'Structural fatigue detected',
       type: 'Equipment'
@@ -104,7 +104,7 @@ export class InspectionStatusComponent implements OnInit {
     { label: 'Risk Coverage', value: 100, color: '#38bdf8' }
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getGaugeStyle(value: number) {
     const circumference = 2 * Math.PI * 40;

@@ -33,22 +33,22 @@ export class MapOverviewComponent implements AfterViewInit, OnDestroy {
 
   platforms: Platform[] = [
     {
-      name: 'Golok',
+      name: 'Golok RImau',
       lat: 3.627644,
       lng: 112.677713,
-      subText: 'SA-SA Platform • SK311'
+      subText: 'SA-SA Platform • SKV311'
     },
     {
-      name: 'Merapuh',
+      name: 'Merapoh',
       lat: 3.657644,
       lng: 112.707713,
-      subText: 'SA-SA Platform • SK311'
+      subText: 'SA-SA Platform • SKV311'
     },
     {
-      name: 'Serampang',
+      name: 'Serampang 2 Mata',
       lat: 3.657644,
       lng: 112.547713,
-      subText: 'SA-SA Platform • SK311'
+      subText: 'SA-SA Platform • SKV311'
     }
   ];
 

@@ -50,13 +50,6 @@ ng serve
 ```
 Navigate to `http://localhost:4200/` to view the application.
 
-## ⚙️ Configuration
-
-### Google Maps API Key
-To enable the Map Overview, you must add your Google Maps API key to the `src/index.html` file:
-```html
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-```
 
 ## 📂 Project Structure
 
