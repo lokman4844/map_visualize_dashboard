@@ -16,14 +16,14 @@ MyInspect is a modern, web-based Proof of Concept (PoC) designed for industrial 
 
 ### 3. Map Overview
 - **Geographic Asset Tracking**: Integration with **OpenStreetMap** to visualize assets in their global context.
-- **Specific Asset Targeting**: Pre-configured view centered on the **SK311 Block (South Acis Platform)** offshore Sarawak.
+- **Specific Asset Targeting**: Pre-configured view centered on the **SKV311 Block (Selatan Acis Platform)** offshore Sarawak.
 - **Satellite Integration**: High-resolution satellite tiles for realistic offshore visualization.
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [Angular](https://angular.dev/) (Standalone Components)
 - **Diagramming**: [GoJS](https://gojs.net/)
-- **Mapping**: [@angular/google-maps](https://github.com/angular/components/tree/main/src/google-maps)
+- **Mapping**: [Leaflet](https://leafletjs.com/) & [OpenStreetMap](https://www.openstreetmap.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [DaisyUI](https://daisyui.com/)
 - **State Management**: Angular Services with RxJS Observables
 
@@ -51,10 +51,18 @@ ng serve
 Navigate to `http://localhost:4200/` to view the application.
 
 
+## 🛣️ Application Routes
+
+- `/`: **Map Overview** (Regional asset tracking)
+- `/monitor`: **Industrial Monitor** (Detailed SCADA visualization)
+- `/inspection-status`: **Inspection Dashboard** (Integrity scores and findings)
+- `/editor`: **Drawing Editor** (Diagram customization tools)
+
 ## 📂 Project Structure
 
-- `src/app/industrial-monitor`: Core SCADA visualization logic and data.
-- `src/app/drawing-editor`: Interactive diagram editing tools.
-- `src/app/map-overview`: Geographic visualization component.
-- `src/app/services`: Shared state and data synchronization services.
-- `src/app/layout`: Reusable UI components (Header, Sidebar).
+- `src/app/map-overview`: Geographic visualization and asset markers.
+- `src/app/industrial-monitor`: High-fidelity SCADA diagram and asset simulation.
+- `src/app/inspection-status`: Detailed integrity reporting and visual health gauges.
+- `src/app/drawing-editor`: Logic for rearranging and customizing diagram layouts.
+- `src/app/services`: Shared state management and data synchronization.
+- `src/app/layout`: Foundation components including navigation and header.
